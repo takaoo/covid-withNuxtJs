@@ -64,7 +64,7 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-chart-line',
           title: 'Japan',
           to: '/japan'
         },
