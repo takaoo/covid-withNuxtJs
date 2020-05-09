@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app :dark="setTheme">
     <v-navigation-drawer v-model="drawer" :mini-variant="miniVariant" :clipped="clipped" fixed app>
       <v-list>
         <v-list-item v-for="(item, i) in items" :key="i" :to="item.to" router exact>
@@ -25,6 +25,7 @@
       </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
+      <v-switch :label="`Dark Theme`" v-model="goDark"></v-switch>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
@@ -60,7 +61,7 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Summary',
           to: '/'
         },
         {
@@ -69,15 +70,25 @@ export default {
           to: '/japan'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'summary',
-          to: '/summary'
+          icon: 'mdi-earth',
+          title: 'World',
+          to: '/world'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      goDark: false
+    }
+  },
+  computed: {
+    setTheme() {
+      if (this.goDark == true) {
+        return (this.$vuetify.theme.dark = true)
+      } else {
+        return (this.$vuetify.theme.dark = false)
+      }
     }
   }
 }
