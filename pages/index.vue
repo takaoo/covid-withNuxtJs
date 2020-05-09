@@ -1,6 +1,6 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
+    <v-flex>
       <div class="text-center">
         <!-- <GmapMap
           :center="{lat:36, lng:140}"
@@ -36,15 +36,17 @@
               hide-details
             ></v-text-field>
           </v-card-title>
-          <v-data-table
-            :headers="headers"
-            :items="countries"
-            :search="search"
-            dense
-            :sort-by="['TotalConfirmed']"
-            :sort-desc="[true]"
-            :items-per-page="20"
-          ></v-data-table>
+          <no-ssr>
+            <v-data-table
+              :headers="headers"
+              :items="countries"
+              :search="search"
+              dense
+              :sort-by="['TotalConfirmed']"
+              :sort-desc="[true]"
+              :items-per-page="20"
+            />
+          </no-ssr>
         </v-card>
       </div>
     </v-flex>
