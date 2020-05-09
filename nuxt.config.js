@@ -17,7 +17,7 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/covid-withNuxtJs/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -79,5 +79,8 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) { transpile: [/^vue2-google-maps($|\/)/] },
-  }
+  },
+  router: {
+    base: '/covid-withNuxtJs/'
+  },
 }
