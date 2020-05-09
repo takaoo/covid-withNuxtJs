@@ -9,7 +9,6 @@
 <script>
 import Chart from '../components/Chart'
 import axios from 'axios'
-import moment from 'moment'
 
 export default {
   components: {
@@ -56,9 +55,14 @@ export default {
       ]
     },
     options: {
+      title: { display: true, text: '日本のチャート' },
       scales: {
         xAxes: [
           {
+            type: 'time',
+            time: {
+              unit: 'month'
+            },
             scaleLabel: {
               display: true,
               labelString: 'Date'
@@ -68,8 +72,12 @@ export default {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true,
-              stepSize: 100
+              beginAtZero: true
+              // stepSize: 100
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'people'
             }
           }
         ]
@@ -86,7 +94,7 @@ export default {
             this.arr.forEach((element, index) => {
               this.chartdata.datasets[index].data.push(data[element])
             })
-            this.chartdata.labels.push(moment(data.Date).format('YY/MM/DD'))
+            this.chartdata.labels.push(data.Date)
           })
           console.log(response.data)
           this.loaded = true
