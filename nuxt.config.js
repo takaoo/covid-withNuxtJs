@@ -1,6 +1,12 @@
 const colors = require('vuetify/es5/util/colors').default
-
+// `DEPLOY_ENV` が `GH_PAGES` の場合のみ `router.base = '/<repository-name>/'` を追加する
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/covid-withNuxtJs/'
+  }
+} : {}
 module.exports = {
+  ...routerBase,
   mode: 'universal',
   /*
    ** Headers of the page
@@ -79,8 +85,5 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) { transpile: [/^vue2-google-maps($|\/)/] },
-  },
-  router: {
-    base: '/covid-withNuxtJs/'
-  },
+  }
 }
