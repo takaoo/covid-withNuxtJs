@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <Chart v-if="loaded" :chartdata="chartdata" :options="options" />
+      <Chart v-if="loaded" :chartData="chartdata" :options="options" />
     </v-flex>
   </v-layout>
 </template>

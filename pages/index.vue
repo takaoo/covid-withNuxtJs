@@ -87,10 +87,6 @@ export default {
     ],
     options: []
   }),
-  components: {
-    Logo,
-    VuetifyLogo
-  },
   beforeCreate() {
     axios.get('https://api.covid19api.com/summary').then((response) => {
       this.global = response.data.Global
